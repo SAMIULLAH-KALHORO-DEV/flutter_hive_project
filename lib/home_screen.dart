@@ -14,13 +14,13 @@ class HomeScreen extends StatelessWidget {
             future: Hive.openBox('kashif'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-              return Column(
-                children: [
-                Text(snapshot.data!.get('name').toString()),
-                 Text(snapshot.data!.get('age').toString()),
-                 
-                 ],
-              );
+                return Column(
+                  children: [
+                    Text(snapshot.data!.get('name').toString()),
+                    Text(snapshot.data!.get('age').toString()),
+                  
+                  ],
+                );
               }
               return CircularProgressIndicator(); // Or any loading indicator
             },
@@ -31,10 +31,10 @@ class HomeScreen extends StatelessWidget {
         onPressed: () async {
           var box = await Hive.openBox('kashif');
 
-          box.put('name', 'kashif ');
+          box.put('name', 'kashif');
           box.put('age', 22);
-          print(box.get('name'));
-          print(box.get('age'));
+          // print(box.get('name'));
+          // print(box.get('age'));
         },
         child: Icon(Icons.add),
       ),
